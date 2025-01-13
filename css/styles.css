@@ -1,0 +1,344 @@
+.my-5 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* sidebar.css */
+#sidebar-container {
+  position: fixed;
+  /* Fixa a sidebar na tela */
+  left: 0;
+  top: 0;
+  width: 280px;
+  /* Largura da sidebar */
+  height: 100vh;
+  /* Altura total da tela */
+  background-color: #2d2d2d;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  /* Sombras para a sidebar */
+  z-index: 1000;
+  /* Coloca a sidebar sobre o conteúdo */
+  padding-top: 20px;
+  /* Espaçamento superior para o conteúdo da sidebar */
+}
+
+.nav-link {
+  color: #00bb83 !important;
+  font-weight: bold;
+  transition: transform 0.2s ease-in-out;
+  /* Transição suave */
+}
+
+.nav-link.active {
+  position: relative;
+  font-weight: bold;
+  color: #00bb83 !important;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #00bb83;
+}
+
+/* Animação de hover para os links da sidebar */
+.nav-link:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Garante que o conteúdo principal da página seja deslocado para a direita, ocupando o espaço da sidebar */
+body {
+  margin-left: 280px;
+  /* Desloca o conteúdo para a direita para dar espaço à sidebar */
+  padding-top: 20px;
+  /* Desloca o conteúdo para baixo para não ficar em cima da sidebar */
+}
+
+.container {
+  padding-left: 20px;
+  /* Espaçamento à esquerda do conteúdo */
+}
+
+/* Container que organiza os cards lado a lado */
+#presetListContainer {
+  display: flex;
+  gap: 20px;
+  /* Espaçamento entre os cards */
+  overflow-x: auto;
+  /* Adiciona scroll horizontal */
+  padding: 10px;
+  /* Espaçamento interno */
+  scrollbar-width: auto;
+  /* Estilo do scroll em navegadores compatíveis */
+  scrollbar-color: #ced4da #f8f9fa;
+  margin-bottom: 2%;
+}
+
+#presetListContainer::-webkit-scrollbar {
+  height: 8px;
+  /* Altura do scrollbar */
+}
+
+#presetListContainer::-webkit-scrollbar-thumb {
+  background-color: #ced4da;
+  /* Cor do indicador */
+  border-radius: 4px;
+  /* Cantos arredondados */
+}
+
+#presetListContainer::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  /* Fundo do track */
+}
+
+/* Estilo dos cards de presets */
+.preset-card {
+  background: #ffffff;
+  /* Fundo branco */
+  border: 1px solid #dee2e6;
+  /* Borda leve */
+  border-radius: 10px;
+  /* Bordas arredondadas */
+  padding: 15px;
+  /* Espaçamento interno */
+  min-width: 300px;
+  /* Largura mínima dos cards */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Sombra leve */
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-height: 400px;
+  /* Definir altura máxima fixa */
+  overflow-y: auto;
+  /* Permitir rolagem vertical caso o conteúdo ultrapasse a altura */
+}
+
+.preset-card:hover {
+  transform: translateY(-5px);
+  /* Elevação ao passar o mouse */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  /* Sombra mais forte */
+}
+
+.preset-card h5 {
+  font-size: 1.2rem;
+  color: #00bb83;
+  /* Azul primário */
+  margin-bottom: 10px;
+}
+
+.preset-card ul {
+  list-style: disc;
+  padding-left: 20px;
+  /* Identação da lista */
+}
+
+.preset-card ul li {
+  margin-bottom: 5px;
+  color: #495057;
+  /* Cinza escuro */
+}
+
+/* Estilo para o título do preset */
+.preset-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.card-header {
+  color: #fff;
+  background-color: #00bb83;
+  font-size: 25px;
+}
+
+.title {
+  color: #00bb83;
+}
+
+.btn-add {
+  background-color: #6c757d;
+  /* Cor de fundo cinza */
+  color: white;
+  /* Cor do texto */
+  font-size: 1rem;
+  /* Tamanho da fonte */
+  padding: 5px 10px;
+  /* Espaçamento interno */
+  border: none;
+  /* Sem borda */
+  border-radius: 40px;
+  /* Bordas arredondadas */
+  cursor: pointer;
+  /* Mostra o cursor de pointer */
+  transition: background-color 0.3s, transform 0.2s;
+  /* Efeitos de transição */
+}
+
+.btn-add:hover {
+  background-color: #5a6268;
+  /* Cor de fundo mais escura ao passar o mouse */
+  transform: translateY(-3px);
+  /* Elevação sutil do botão */
+}
+
+.btn-add:active {
+  background-color: #495057;
+  /* Cor de fundo mais escura quando pressionado */
+  transform: translateY(1px);
+  /* Deslocamento para baixo quando pressionado */
+}
+
+.btn-add i {
+  margin-right: 8px;
+  /* Espaçamento entre o ícone e o texto */
+  font-size: 1.2rem;
+  /* Tamanho do ícone */
+}
+
+/* Estilo para o botão de salvar (verde) */
+.btn-save {
+  background-color: #00bb83;
+  /* Cor de fundo verde */
+  color: white;
+  /* Cor do texto */
+  font-size: 1rem;
+  /* Tamanho da fonte */
+  padding: 5px 10px;
+  /* Espaçamento interno */
+  border: none;
+  /* Sem borda */
+  border-radius: 40px;
+  /* Bordas arredondadas */
+  cursor: pointer;
+  /* Mostra o cursor de pointer */
+  transition: background-color 0.3s, transform 0.2s;
+  /* Efeitos de transição */
+}
+
+.btn-save:hover {
+  background-color: #009a6f;
+  /* Cor de fundo mais escura ao passar o mouse */
+  transform: translateY(-3px);
+  /* Elevação sutil do botão */
+}
+
+.btn-save:active {
+  background-color: #007c57;
+  /* Cor de fundo mais escura quando pressionado */
+  transform: translateY(1px);
+  /* Deslocamento para baixo quando pressionado */
+}
+
+.btn-save i {
+  margin-right: 8px;
+  /* Espaçamento entre o ícone e o texto */
+  font-size: 1.2rem;
+  /* Tamanho do ícone */
+}
+
+#assignedUsersTable tbody {
+  max-height: 200px;
+}
+
+.custom-header {
+  color: #fff;
+  background-color: #00bb83;
+  font-size: 25px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 0;
+}
+
+.modal-dialog {
+  border: none;
+  border-radius: 0 !important;
+}
+
+/* Estilizando o botão de fechar (x) */
+.custom-close {
+  color: #ffffff;
+  /* Cor vermelha */
+  font-size: 2rem;
+  /* Tamanho do ícone */
+  font-weight: bold;
+  /* Deixar o ícone em negrito */
+  background: transparent;
+  /* Sem fundo */
+  border: none;
+  /* Remover borda */
+  opacity: 1;
+  /* Manter visibilidade */
+}
+
+.notification-section {
+  padding: 20px;
+
+  background-color: #f9f9f9;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.notification-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #00bb83;
+}
+
+.notification-item h4 {
+  margin: 0;
+  color: #333;
+}
+
+.notification-item p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.notification-item small {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.color {
+  color: #47494a;
+}
+
+.preset-title {
+  font-size: 18px;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  padding-right: 30px;
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

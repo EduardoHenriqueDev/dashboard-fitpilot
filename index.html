@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Treinos e Presets</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Estilo personalizado para a mensagem de boas-vindas */
+    #greeting-message {
+      text-align: left;
+      /* Alinhamento à esquerda */
+      animation: slideInLeft 1s ease-out;
+      /* Animação de deslizamento */
+    }
+
+    /* Estilo para o h3 dentro de #greeting-message */
+    #greeting-message h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* Estilo para o nome do usuário */
+    .username {
+      color: #00bb83;
+      /* Cor preta para o nome do usuário */
+    }
+
+    /* Estilo para os cards */
+    .card {
+      border: 2px solid #00bb83;
+      /* Borda verde */
+      border-radius: 10px;
+      /* Bordas arredondadas */
+      height: 160px;
+      /* Definindo uma altura fixa para os cards */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      /* Organiza os elementos na vertical */
+      width: 250px;
+      /* Define a largura dos cards */
+    }
+
+    /* Estilo para centralizar os cards na tela */
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      /* Espaço entre os cards */
+      flex-wrap: wrap;
+      /* Permite que os cards se ajustem em múltiplas linhas, se necessário */
+    }
+
+    /* Tamanho menor para o texto no card */
+    .card-text {
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+
+    /* Tamanho e cor para o número */
+    .green-number {
+      font-size: 2.5rem;
+      /* Tamanho grande para o número */
+      font-weight: bold;
+      color: #00bb83;
+      /* Cor verde */
+      display: block;
+      /* Faz o número aparecer em uma linha separada */
+      margin-top: 10px;
+      /* Adiciona um espaço acima do número */
+    }
+
+    .btn-atalho {
+      font-size: 2rem;
+      /* Tamanho grande para o número */
+      font-weight: bold;
+      color: #00bb83;
+      /* Cor verde */
+      display: block;
+      /* Faz o número aparecer em uma linha separada */
+      margin-top: 10px;
+      /* Adiciona um espaço acima do número */
+      padding: 0;
+    }
+
+    .contact-form {
+      margin: 40px auto;
+      padding: 15px 30px;
+      /* Reduz o espaçamento vertical, mantendo o horizontal */
+      border: 2px solid #00bb83;
+      border-radius: 10px;
+      max-width: 800px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form h3 {
+      margin-bottom: 10px;
+      /* Reduz o espaço abaixo do título */
+    }
+
+    .contact-form .mb-3 {
+      margin-bottom: 10px;
+      /* Reduz o espaço entre os campos do formulário */
+    }
+
+    /* Definindo a animação */
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Garantir que o formulário ocupe todo o espaço dentro do card */
+    .card form {
+      display: flex;
+      flex-direction: column;
+      /* Organiza os campos na vertical */
+      gap: 15px;
+      /* Espaçamento uniforme entre os campos */
+    }
+
+    /* Ajustar margens dos inputs para evitar overflow */
+    .card input,
+    .card textarea,
+    .card button {
+      width: 100%;
+      /* Garantir que o campo ocupe toda a largura */
+      box-sizing: border-box;
+      /* Inclui padding e borda no cálculo do tamanho */
+    }
+
+    /* Botão de submissão alinhado */
+    .card button {
+      align-self: flex-start;
+      /* Alinha o botão no início */
+    }
+
+    /* Alinhar o formulário e o container de notificações lado a lado */
+    .notification-section-container {
+      display: flex;
+      gap: 30px;
+      /* Espaço entre o formulário e o container de notificações */
+      justify-content: space-between;
+      /* Garante que eles fiquem no início e fim */
+    }
+
+    /* Garantir que o formulário de notificações ocupe um espaço fixo */
+    .contact-form {
+      width: 60%;
+      /* Ajuste conforme necessário */
+      margin: 0;
+      /* Remova a margem extra */
+    }
+
+    /* Garantir que o container de notificações ocupe o restante do espaço */
+    #notification-container {
+      width: 35%;
+      /* Ajuste conforme necessário */
+    }
+  </style>
+</head>
+
+<body class="body">
+  <div id="sidebar-container"></div>
+
+  <!-- Mensagem de Boas-Vindas -->
+  <div id="greeting-message" class="container my-5">
+    <!-- A mensagem será atualizada dinamicamente aqui -->
+  </div>
+
+  <!-- Cards para a contagem de usuários e academias -->
+  <div class="container my-5">
+    <div class="cards-container">
+      <!-- Card para a contagem de usuários -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: bold">Total de Usuários</h5>
+          <p id="user-count">
+            Registrados na sua Academia:
+            <span id="user-count-number" class="green-number">Carregando...</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Card para a contagem de academias -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: bold">Academias</h5>
+          <p id="academy-count">
+            Registradas no Sistema:
+            <span id="academy-count-number" class="green-number">Carregando...</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Card para atalhos de navegação -->
+      <div class="card" style="width: 500px">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: bold">
+            Funções mais Utilizadas
+          </h5>
+          <p id="academy-count" style="margin-bottom: 0">
+            Atalhos Favoritos dos Usuários:
+          </p>
+          <div class="d-flex gap-5">
+            <!-- Flexbox para alinhamento lado a lado -->
+            <button class="btn btn-atalho" onclick="window.location.href='cadastroAlunos.html'">
+              Alunos
+            </button>
+            <button class="btn btn-atalho" onclick="window.location.href='treinos.html'">
+              Treinos
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container que envolve o formulário e o container de notificações -->
+      <div class="notification-section-container" style="margin-bottom: 15px; width: 100%;">
+        <div style="width: 100%">
+          <div style="border: 2px solid #00bb83; border-radius: 10px">
+            <h5 class="card-title" style="
+          border-top-left-radius: 6px;
+          border-top-right-radius: 6px;
+          font-weight: bold;
+          background-color: #00bb83;
+          color: #fff;
+          text-align: left;
+          padding: 10px;
+        ">
+              Enviar Notificação:
+              <small style="color: rgba(255, 255, 255, 0.67); font-style: italic; font-weight: normal;">*
+                Todos os Alunos Irão Receber</small>
+            </h5>
+            <form id="form-content" style="padding: 10px">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="inputTitle" class="form-label" style="font-weight: bold">Título:</label>
+                  <input type="text" class="form-control" id="inputTitle" placeholder="Ex. Novidade na Academia!"
+                    required />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="inputSubtitle" class="form-label" style="font-weight: bold">Subtítulo:</label> <small
+                    style="color: grey; font-style: italic;">*
+                    opcional</small>
+                  <input type="text" class="form-control" id="inputSubtitle"
+                    placeholder="Subtítulo da sua mensagem..." />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="inputDescription" class="form-label" style="font-weight: bold">Descrição:</label>
+                <textarea class="form-control" id="inputDescription" rows="3"
+                  placeholder="Ex. Novos Equipamentos de Última Geração, Venha Experimentá-los!" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-save" style="display: flex">
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+
+
+        <div style="width: 100%">
+          <div style="border: 2px solid #00bb83; border-radius: 10px">
+            <h5 class="card-title" style="
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            font-weight: bold;
+            background-color: #00bb83;
+            color: #fff;
+            text-align: left;
+            padding: 10px;
+          ">
+              Notificações Enviadas:
+            </h5>
+            <div id="notification-container" class="notification-section"
+              style="max-height: 274px; overflow-y: auto; margin: 0; width: 100%;">
+              <!-- As notificações serão renderizadas aqui -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card para a frase motivacional -->
+      <div class="card" style="width: 100%">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: bold">
+            Frase Motivacional do Dia
+          </h5>
+          <span id="frase" class="green-number"> Carregando... </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulário de Contato com Suporte -->
+  <div class="container contact-form d-none">
+    <h3>Entre em Contato com o Suporte</h3>
+    <form>
+      <div class="mb-3">
+        <label for="userName" class="form-label">Seu Nome</label>
+        <input type="text" class="form-control" id="userName" placeholder="Digite seu nome" required />
+      </div>
+      <div class="mb-3">
+        <label for="userEmail" class="form-label">Seu E-mail</label>
+        <input type="email" class="form-control" id="userEmail" placeholder="Digite seu e-mail" required />
+      </div>
+      <div class="mb-3">
+        <label for="userMessage" class="form-label">Mensagem</label>
+        <textarea class="form-control" id="userMessage" rows="4" placeholder="Descreva sua dúvida ou sugestão"
+          required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Enviar Mensagem</button>
+    </form>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js" type="module"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js" type="module"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js" type="module"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+  <script type="module" src="/js/pages/home.js"></script>
+
+  <!-- Incluindo o Bootstrap JS e dependências -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <script src="js/pages/sidebar.js"></script>
+</body>
+
+</html>
