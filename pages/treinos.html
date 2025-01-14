@@ -27,27 +27,19 @@
     /* Adiciona um espaço acima do número */
     text-align: center;
   }
+
+  .preset-card {
+    border: solid 2px #00bb83;
+  }
 </style>
 
 <body class="body">
   <div id="sidebar-container"></div>
 
-  <script>
-    // Carregar a sidebar no container
-    fetch("../components/sidebar.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("sidebar-container").innerHTML = data;
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar a sidebar:", error);
-      });
-  </script>
-
   <!-- Adicionar Novo Preset -->
-  <div class="card mb-4" style="margin: 50px; margin-top: 0px; margin-bottom: 0px !important;">
-    <div class="card-header" style="font-weight: bold">
-      Adicionar Novo Preset
+  <div class="card mb-4" style="margin: 50px; margin-top: 0px; margin-bottom: 0px !important;  border: solid 2px #00bb83; border-radius: 10px;">
+    <div class="card-header" style="font-weight: bold; border-top-left-radius: 6px; border-top-right-radius: 6px; border: solid 2px #00bb83;">
+      Cadastrar Novo Preset de Treino
     </div>
     <div class="card-body">
       <!-- Título do campo Nome do Preset -->

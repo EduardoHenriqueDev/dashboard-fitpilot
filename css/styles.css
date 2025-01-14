@@ -1,3 +1,17 @@
+/* Define o estilo para o container principal */
+.container {
+  max-width: 100%;
+  padding-left: 50;
+  padding-right: 50;
+  margin: 0;
+}
+
+/* Ajusta as colunas para dividir uniformemente o espaço */
+.row>[class*="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .my-5 {
   margin-top: 0 !important;
   padding-top: 0 !important;
@@ -5,23 +19,135 @@
   padding-bottom: 0 !important;
 }
 
-/* sidebar.css */
-#sidebar-container {
-  position: fixed;
-  /* Fixa a sidebar na tela */
-  left: 0;
-  top: 0;
-  width: 280px;
-  /* Largura da sidebar */
-  height: 100vh;
-  /* Altura total da tela */
-  background-color: #2d2d2d;
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-  /* Sombras para a sidebar */
-  z-index: 1000;
-  /* Coloca a sidebar sobre o conteúdo */
-  padding-top: 20px;
-  /* Espaçamento superior para o conteúdo da sidebar */
+@media (min-height: 900px) {
+  #sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 340px;
+    height: 100vh;
+    background-color: #2d2d2d;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding-top: 20px;
+  }
+
+  body {
+    margin-left: 340px;
+    padding-top: 20px;
+  }
+
+  #sidebar-links {
+    width: 100%px;
+    background-color: #2d2d2d !important;
+    font-size: 25px;
+  }
+
+  #sidebar-icons {
+    font-size: 29px;
+  }
+
+  .custom-hr {
+    width: 90%;
+    border: 2px solid #00bb83;
+    margin: 10px auto;
+  }
+
+  #sidebar-img {
+    max-width: 200px;
+  }
+
+  #owner-name {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #00bb83;
+    margin-bottom: 0;
+  }
+
+  #owner-email {
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  #logout-button {
+    margin-top: 100%;
+    margin-left: 15px;
+  }
+
+  #logout-button .bi {
+    font-size: 30px;
+    color: #ff4b4b;
+    cursor: pointer;
+  }
+
+  #logout-button .bi:hover {
+    color: #ff1f1f;
+  }
+}
+
+@media (max-height: 800px) {
+  #sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: #2d2d2d;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding-top: 20px;
+  }
+
+  body {
+    margin-left: 280px;
+    padding-top: 20px;
+  }
+
+  #sidebar-links {
+    width: 100%px;
+    background-color: #2d2d2d !important;
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  #sidebar-icons {
+    font-size: 25px;
+  }
+
+  #sidebar-img {
+    max-width: 150px;
+  }
+
+  #owner-name {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #00bb83;
+    margin-bottom: 0;
+  }
+
+  #owner-email {
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+  }
+
+  #logout-button {
+    margin-top: 70%;
+    margin-left: 10px;
+  }
+
+  #logout-button .bi {
+    font-size: 30px;
+    color: #ff4b4b;
+    cursor: pointer;
+  }
+
+  #logout-button .bi:hover {
+    color: #ff1f1f;
+  }
 }
 
 .nav-link {
@@ -51,19 +177,6 @@
 .nav-link:hover {
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out;
-}
-
-/* Garante que o conteúdo principal da página seja deslocado para a direita, ocupando o espaço da sidebar */
-body {
-  margin-left: 280px;
-  /* Desloca o conteúdo para a direita para dar espaço à sidebar */
-  padding-top: 20px;
-  /* Desloca o conteúdo para baixo para não ficar em cima da sidebar */
-}
-
-.container {
-  padding-left: 20px;
-  /* Espaçamento à esquerda do conteúdo */
 }
 
 /* Container que organiza os cards lado a lado */
@@ -341,4 +454,9 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.form-control {
+  border-radius: 30px;
+  border: solid 2px #00bb83;
 }

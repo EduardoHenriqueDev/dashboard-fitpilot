@@ -90,6 +90,9 @@ document
             document.getElementById("studentName").value = "";
             document.getElementById("studentEmail").value = "";
             document.getElementById("studentPassword").value = "";
+
+            // Chamar a função loadStudents para atualizar a tabela imediatamente
+            loadStudents();
         } catch (error) {
             console.error("Erro ao cadastrar o aluno:", error);
             alert("Erro ao cadastrar o aluno. Tente novamente.");
@@ -409,6 +412,62 @@ firebase.auth().onAuthStateChanged(async (user) => {
         alert("Você precisa estar logado para visualizar os alunos.");
     }
 });
+
+// Carregar a sidebar no container
+fetch("../components/sidebar.html")
+    .then((response) => response.text())
+    .then((data) => {
+        document.getElementById("sidebar-container").innerHTML = data;
+
+        // Após carregar o HTML, inicializar a lógica do Firebase
+        initializeSidebar();
+    })
+    .catch((error) => {
+        console.error("Erro ao carregar a sidebar:", error);
+    });
+
+function initializeSidebar() {
+    auth.onAuthStateChanged(function (user) {
+        if (user) {
+            try {
+                const userId = user.uid;
+                const docRef = db.collection("academias").doc(userId);  // Acessando o documento diretamente pela coleção "academias"
+                docRef.get().then((docSnap) => {
+                    if (docSnap.exists) {
+                        const data = docSnap.data();
+                        const ownerInfoElement = document.getElementById("owner-info");
+                        if (ownerInfoElement) {
+                            ownerInfoElement.innerHTML = `
+                            <p id="owner-name">${data.name}</p>
+                            <p id="owner-email">${data.ownerEmail}</p>
+                        `;
+                        } else {
+                            console.error("Elemento 'owner-info' não encontrado.");
+                        }
+                    } else {
+                        console.log("Documento não encontrado no Firestore.");
+                    }
+                }).catch((error) => {
+                    console.error("Erro ao buscar informações no Firestore:", error);
+                });
+            } catch (error) {
+                console.error("Erro ao buscar informações no Firestore:", error);
+            }
+        } else {
+            console.log("Nenhum usuário está logado no momento.");
+        }
+    });
+}
+
+window.logout = function () {
+    auth.signOut()
+        .then(() => {
+            window.location.href = "../pages/login.html";
+        })
+        .catch((error) => {
+            console.error("Erro ao deslogar: ", error);
+        });
+};
 
 // Função para filtrar alunos pela barra de pesquisa
 document

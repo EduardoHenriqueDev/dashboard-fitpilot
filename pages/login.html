@@ -363,10 +363,19 @@
             }
         });
 
+        // Verifica o estado de autenticação ao carregar a página
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Se o usuário estiver logado, redireciona para a página principal
+                window.location.href = '../index.html';
+            }
+        });
+
         // Eventos de clique nos botões
         document.getElementById('login-button').addEventListener('click', login);
         document.getElementById('logout-button').addEventListener('click', logout);
     </script>
+
 </body>
 
 </html>

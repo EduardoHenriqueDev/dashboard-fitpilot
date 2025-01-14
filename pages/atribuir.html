@@ -26,6 +26,29 @@
     /* Adiciona um espaço acima do número */
     text-align: center;
   }
+
+  .form-select {
+    border-radius: 30px;
+    border: solid 2px #00bb83;
+  }
+
+  @media (min-height: 900px) {
+    .card-body {
+      max-height: 860px;
+      /* Altura máxima limitada */
+      overflow-y: auto;
+      /* Permitir rolagem vertical se necessário */
+    }
+  }
+
+  @media (max-height: 800px) {
+    .card-body {
+      max-height: 680px;
+      /* Altura máxima para telas com altura < 900px */
+      overflow-y: auto;
+      /* Permitir rolagem vertical se necessário */
+    }
+  }
 </style>
 
 <body class="body" style="
@@ -35,22 +58,10 @@
     ">
   <div id="sidebar-container"></div>
 
-  <script>
-    // Carregar a sidebar no container
-    fetch("../components/sidebar.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("sidebar-container").innerHTML = data;
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar a sidebar:", error);
-      });
-  </script>
-
   <!-- Container para o conteúdo da página -->
   <div class="container">
     <!-- Adicionar Novo Preset -->
-    <div class="card mb-4 d-none mx-auto" style="max-width: 700px">
+    <div class="card mb-4 d-none mx-auto" style="max-width: 700px;">
       <div class="card-header" style="font-weight: bold">
         Adicionar Novo Preset
       </div>
@@ -94,8 +105,9 @@
     <div class="row mb-4 justify-content-center">
       <!-- Atribuir Preset a um Usuário -->
       <div class="col-md-6">
-        <div class="card">
-          <div class="card-header" style="font-weight: bold">
+        <div class="card" style="border: solid 2px #00bb83; border-radius: 10px;">
+          <div class="card-header"
+            style="font-weight: bold; border-top-left-radius: 6px; border-top-right-radius: 6px; border: solid 2px #00bb83;">
             Atribuir Preset a um Usuário
           </div>
           <div class="card-body">
@@ -125,8 +137,9 @@
 
       <!-- Usuários Atribuídos a Presets -->
       <div class="col-md-6">
-        <div class="card mb-4">
-          <div class="card-header" style="font-weight: bold">
+        <div class="card mb-4" style="border: solid 2px #00bb83; border-radius: 10px;">
+          <div class="card-header"
+            style="font-weight: bold; border-top-left-radius: 6px; border-top-right-radius: 6px; border: solid 2px #00bb83;">
             Usuários Atribuídos a Presets
           </div>
           <div class="card-body" style="max-height: 100%; overflow-y: auto">
@@ -134,7 +147,7 @@
             <div class="input-group mb-3" style="margin-bottom: 0 !important">
               <input type="text" id="searchAssignedUsers" class="form-control"
                 placeholder="Pesquisar usuário ou preset..." />
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
+              <span class="input-group-text" style="border: solid 2px #00bb83;"><i class="fas fa-search"></i></span>
             </div>
 
             <!-- Tabela de Usuários Atribuídos -->

@@ -168,10 +168,37 @@
       /* Remova a margem extra */
     }
 
-    /* Garantir que o container de notificações ocupe o restante do espaço */
-    #notification-container {
-      width: 35%;
-      /* Ajuste conforme necessário */
+    @media (min-height: 900px) {
+      #notification-container {
+        max-height: 450px;
+        overflow-y: auto;
+        margin: 0;
+        width: 100%;
+      }
+
+      #inputDescription {
+        height: 245.19px;
+      }
+    }
+
+    @media (max-height: 800px) {
+      #notification-container {
+        max-height: 278px;
+        overflow-y: auto;
+        margin: 0;
+        width: 100%;
+      }
+
+      #form-content {
+        max-height: 278px;
+        margin: 0;
+        width: 100%;
+      }
+    }
+
+    .form-control {
+      border-radius: 30px;
+      border: solid 2px #00bb83;
     }
   </style>
 </head>
@@ -184,13 +211,11 @@
     <!-- A mensagem será atualizada dinamicamente aqui -->
   </div>
 
-  <!-- Cards para a contagem de usuários e academias -->
   <div class="container my-5">
     <div class="cards-container">
-      <!-- Card para a contagem de usuários -->
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" style="font-weight: bold">Total de Usuários</h5>
+          <h5 class="card-title" style="font-weight: bold">Usuários</h5>
           <p id="user-count">
             Registrados na sua Academia:
             <span id="user-count-number" class="green-number">Carregando...</span>
@@ -198,7 +223,6 @@
         </div>
       </div>
 
-      <!-- Card para a contagem de academias -->
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="font-weight: bold">Academias</h5>
@@ -220,10 +244,10 @@
           </p>
           <div class="d-flex gap-5">
             <!-- Flexbox para alinhamento lado a lado -->
-            <button class="btn btn-atalho" onclick="window.location.href='cadastroAlunos.html'">
+            <button class="btn btn-atalho" onclick="window.location.href='/pages/cadastroAlunos.html'">
               Alunos
             </button>
-            <button class="btn btn-atalho" onclick="window.location.href='treinos.html'">
+            <button class="btn btn-atalho" onclick="window.location.href='/pages/treinos.html'">
               Treinos
             </button>
           </div>
@@ -264,7 +288,7 @@
               </div>
               <div class="mb-3">
                 <label for="inputDescription" class="form-label" style="font-weight: bold">Descrição:</label>
-                <textarea class="form-control" id="inputDescription" rows="3"
+                <textarea class="form-control" id="inputDescription" rows="3" style="border-bottom-right-radius: 0;"
                   placeholder="Ex. Novos Equipamentos de Última Geração, Venha Experimentá-los!" required></textarea>
               </div>
               <button type="submit" class="btn btn-save" style="display: flex">
@@ -288,8 +312,7 @@
           ">
               Notificações Enviadas:
             </h5>
-            <div id="notification-container" class="notification-section"
-              style="max-height: 274px; overflow-y: auto; margin: 0; width: 100%;">
+            <div id="notification-container" class="notification-section">
               <!-- As notificações serão renderizadas aqui -->
             </div>
           </div>
@@ -341,7 +364,6 @@
   <!-- Incluindo o Bootstrap JS e dependências -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-  <script src="js/pages/sidebar.js"></script>
 </body>
 
 </html>

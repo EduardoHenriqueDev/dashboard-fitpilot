@@ -26,29 +26,36 @@
     /* Adiciona um espaço acima do número */
     text-align: center;
   }
+
+  @media (min-height: 900px) {
+    .card-body {
+      max-height: 860px;
+      /* Altura máxima limitada */
+      overflow-y: auto;
+      /* Permitir rolagem vertical se necessário */
+    }
+  }
+
+  @media (max-height: 800px) {
+    .card-body {
+      max-height: 680px;
+      /* Altura máxima para telas com altura < 900px */
+      overflow-y: auto;
+      /* Permitir rolagem vertical se necessário */
+    }
+  }
 </style>
 
 <body class="body">
   <div id="sidebar-container"></div>
 
-  <script>
-    // Carregar a sidebar no container
-    fetch("../components/sidebar.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("sidebar-container").innerHTML = data;
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar a sidebar:", error);
-      });
-  </script>
-
-  <div class="container my-5">
+  <div class="container my-5" style="margin: 0;">
     <!-- Cadastro de Aluno -->
     <div class="row">
       <div class="col-md-6">
-        <div class="card mb-4">
-          <div class="card-header" style="font-weight: bold">
+        <div class="card mb-4" style="border-radius: 10px; border: solid 2px #00bb83;">
+          <div class="card-header"
+            style="font-weight: bold; border-top-left-radius: 6px; border-top-right-radius: 6px; border: solid 2px #00bb83;">
             Cadastro de Aluno
           </div>
           <div class="card-body" style="height: 330px;">
@@ -77,15 +84,15 @@
 
       <!-- Tabela de Alunos -->
       <div class="col-md-6">
-        <div class="card mb-4">
-          <div class="card-header" style="font-weight: bold">
+        <div class="card mb-4" style="border-radius: 10px; border: solid 2px #00bb83;">
+          <div class="card-header" style="font-weight: bold; border: solid 2px #00bb83;">
             Alunos Cadastrados
           </div>
-          <div class="card-body" style="max-height: 100%; overflow-y: auto">
+          <div class="card-body">
             <!-- Barra de Pesquisa -->
-            <div class="input-group mb-3" style="margin-bottom: 0 !important">
+            <div class="input-group mb-3" style="margin-bottom: 0 !important; ">
               <input type="text" id="searchStudents" class="form-control" placeholder="Pesquisar aluno..." />
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
+              <span class="input-group-text" style="border: solid 2px #00bb83;"><i class="fas fa-search"></i></span>
             </div>
 
             <table class="table table-striped">
