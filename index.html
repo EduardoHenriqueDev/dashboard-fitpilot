@@ -5,97 +5,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro de Treinos e Presets</title>
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+
   <style>
-    /* Estilo personalizado para a mensagem de boas-vindas */
     #greeting-message {
       text-align: left;
-      /* Alinhamento à esquerda */
       animation: slideInLeft 1s ease-out;
-      /* Animação de deslizamento */
     }
 
-    /* Estilo para o h3 dentro de #greeting-message */
     #greeting-message h3 {
       font-size: 2rem;
       font-weight: bold;
       margin-bottom: 20px;
     }
 
-    /* Estilo para o nome do usuário */
     .username {
       color: #00bb83;
-      /* Cor preta para o nome do usuário */
     }
 
-    /* Estilo para os cards */
     .card {
       border: 2px solid #00bb83;
-      /* Borda verde */
       border-radius: 10px;
-      /* Bordas arredondadas */
       height: 160px;
-      /* Definindo uma altura fixa para os cards */
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       flex-direction: column;
-      /* Organiza os elementos na vertical */
       width: 250px;
-      /* Define a largura dos cards */
     }
 
-    /* Estilo para centralizar os cards na tela */
     .cards-container {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 20px;
-      /* Espaço entre os cards */
       flex-wrap: wrap;
-      /* Permite que os cards se ajustem em múltiplas linhas, se necessário */
     }
 
-    /* Tamanho menor para o texto no card */
     .card-text {
       font-size: 1.5rem;
       font-weight: normal;
     }
 
-    /* Tamanho e cor para o número */
     .green-number {
       font-size: 2.5rem;
-      /* Tamanho grande para o número */
       font-weight: bold;
       color: #00bb83;
-      /* Cor verde */
       display: block;
-      /* Faz o número aparecer em uma linha separada */
       margin-top: 10px;
-      /* Adiciona um espaço acima do número */
     }
 
     .btn-atalho {
       font-size: 2rem;
-      /* Tamanho grande para o número */
       font-weight: bold;
       color: #00bb83;
-      /* Cor verde */
       display: block;
-      /* Faz o número aparecer em uma linha separada */
       margin-top: 10px;
-      /* Adiciona um espaço acima do número */
       padding: 0;
     }
 
     .contact-form {
       margin: 40px auto;
       padding: 15px 30px;
-      /* Reduz o espaçamento vertical, mantendo o horizontal */
       border: 2px solid #00bb83;
       border-radius: 10px;
       max-width: 800px;
@@ -105,15 +79,12 @@
 
     .contact-form h3 {
       margin-bottom: 10px;
-      /* Reduz o espaço abaixo do título */
     }
 
     .contact-form .mb-3 {
       margin-bottom: 10px;
-      /* Reduz o espaço entre os campos do formulário */
     }
 
-    /* Definindo a animação */
     @keyframes slideInLeft {
       0% {
         transform: translateX(-100%);
@@ -126,46 +97,32 @@
       }
     }
 
-    /* Garantir que o formulário ocupe todo o espaço dentro do card */
     .card form {
       display: flex;
       flex-direction: column;
-      /* Organiza os campos na vertical */
       gap: 15px;
-      /* Espaçamento uniforme entre os campos */
     }
 
-    /* Ajustar margens dos inputs para evitar overflow */
     .card input,
     .card textarea,
     .card button {
       width: 100%;
-      /* Garantir que o campo ocupe toda a largura */
       box-sizing: border-box;
-      /* Inclui padding e borda no cálculo do tamanho */
     }
 
-    /* Botão de submissão alinhado */
     .card button {
       align-self: flex-start;
-      /* Alinha o botão no início */
     }
 
-    /* Alinhar o formulário e o container de notificações lado a lado */
     .notification-section-container {
       display: flex;
       gap: 30px;
-      /* Espaço entre o formulário e o container de notificações */
       justify-content: space-between;
-      /* Garante que eles fiquem no início e fim */
     }
 
-    /* Garantir que o formulário de notificações ocupe um espaço fixo */
     .contact-form {
       width: 60%;
-      /* Ajuste conforme necessário */
       margin: 0;
-      /* Remova a margem extra */
     }
 
     @media (min-height: 900px) {
@@ -206,9 +163,7 @@
 <body class="body">
   <div id="sidebar-container"></div>
 
-  <!-- Mensagem de Boas-Vindas -->
   <div id="greeting-message" class="container my-5">
-    <!-- A mensagem será atualizada dinamicamente aqui -->
   </div>
 
   <div class="container my-5">
@@ -233,7 +188,6 @@
         </div>
       </div>
 
-      <!-- Card para atalhos de navegação -->
       <div class="card" style="width: 500px">
         <div class="card-body">
           <h5 class="card-title" style="font-weight: bold">
@@ -243,7 +197,6 @@
             Atalhos Favoritos dos Usuários:
           </p>
           <div class="d-flex gap-5">
-            <!-- Flexbox para alinhamento lado a lado -->
             <button class="btn btn-atalho" onclick="window.location.href='/pages/cadastroAlunos.html'">
               Alunos
             </button>
@@ -254,7 +207,6 @@
         </div>
       </div>
 
-      <!-- Container que envolve o formulário e o container de notificações -->
       <div class="notification-section-container" style="margin-bottom: 15px; width: 100%;">
         <div style="width: 100%">
           <div style="border: 2px solid #00bb83; border-radius: 10px">
@@ -313,13 +265,11 @@
               Notificações Enviadas:
             </h5>
             <div id="notification-container" class="notification-section">
-              <!-- As notificações serão renderizadas aqui -->
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Card para a frase motivacional -->
       <div class="card" style="width: 100%">
         <div class="card-body">
           <h5 class="card-title" style="font-weight: bold">
@@ -331,7 +281,6 @@
     </div>
   </div>
 
-  <!-- Formulário de Contato com Suporte -->
   <div class="container contact-form d-none">
     <h3>Entre em Contato com o Suporte</h3>
     <form>
@@ -352,7 +301,6 @@
     </form>
   </div>
 
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js" type="module"></script>
   <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js" type="module"></script>
   <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js" type="module"></script>
@@ -361,7 +309,6 @@
 
   <script type="module" src="/js/pages/home.js"></script>
 
-  <!-- Incluindo o Bootstrap JS e dependências -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>

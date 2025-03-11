@@ -103,14 +103,88 @@ document.getElementById("savePreset").addEventListener("click", async () => {
   }
 });
 
+function enableDragAndDrop() {
+  const presetListContainer = document.getElementById("presetListContainer");
+  const cards = presetListContainer.querySelectorAll(".preset-card");
+
+  cards.forEach((card) => {
+    card.setAttribute("draggable", "true");
+
+    card.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", e.target.id);
+      card.classList.add("dragging");
+    });
+
+    card.addEventListener("dragend", () => {
+      card.classList.remove("dragging");
+      saveCardOrder(); // Salvar a ordem dos cards após o rearranjo
+    });
+  });
+
+  presetListContainer.addEventListener("dragover", (e) => {
+    e.preventDefault();
+
+    const afterElement = getDragAfterElement(presetListContainer, e.clientX);
+    const draggingCard = document.querySelector(".dragging");
+
+    if (afterElement == null) {
+      presetListContainer.appendChild(draggingCard);
+    } else {
+      presetListContainer.insertBefore(draggingCard, afterElement);
+    }
+  });
+}
+
+function getDragAfterElement(container, x) {
+  const draggableElements = [...container.querySelectorAll(".preset-card:not(.dragging)")];
+
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = x - box.left - box.width / 2;
+
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}
+
+// Salvar a ordem dos cards no LocalStorage
+function saveCardOrder() {
+  const presetListContainer = document.getElementById("presetListContainer");
+  const cardOrder = [...presetListContainer.children].map((card) => card.id);
+  localStorage.setItem("cardOrder", JSON.stringify(cardOrder));
+}
+
+// Recuperar a ordem dos cards do LocalStorage
+function loadCardOrder() {
+  const cardOrder = JSON.parse(localStorage.getItem("cardOrder"));
+  const presetListContainer = document.getElementById("presetListContainer");
+
+  if (cardOrder) {
+    cardOrder.forEach((cardId) => {
+      const card = document.getElementById(cardId);
+      if (card) {
+        presetListContainer.appendChild(card);
+      }
+    });
+  }
+}
+
+// Chamar enableDragAndDrop após exibir os presets
 async function displayPresets() {
   const presetListContainer = document.getElementById("presetListContainer");
   const loadingElement = document.getElementById("loading");
 
   presetListContainer.innerHTML = ""; // Limpar a lista de cards
 
-  // Exibir a mensagem de "carregando" enquanto a lista de presets está sendo carregada
-  loadingElement.style.display = "block";
+  if (loadingElement) {
+    loadingElement.style.display = "block";
+  }
 
   try {
     const user = firebase.auth().currentUser;
@@ -119,8 +193,9 @@ async function displayPresets() {
         .where("registeredAcademy", "==", user.email)
         .get();
 
-      // Ocultar a mensagem de "carregando" após os dados serem carregados
-      loadingElement.style.display = "none";
+      if (loadingElement) {
+        loadingElement.style.display = "none";
+      }
 
       if (querySnapshot.empty) {
         presetListContainer.innerHTML = "<p>Nenhum preset encontrado.</p>";
@@ -129,6 +204,9 @@ async function displayPresets() {
           const data = doc.data();
           const card = document.createElement("div");
           card.className = "preset-card";
+          card.id = `card-${doc.id}`; // Adicionar um ID único
+          card.draggable = true; // Tornar o card arrastável
+
           const workoutDetails = data.workouts
             .map(
               (workout) =>
@@ -148,13 +226,19 @@ async function displayPresets() {
             </h5>
             <ul>${workoutDetails}</ul>
           `;
+
           presetListContainer.appendChild(card);
         });
+
+        loadCardOrder(); // Carregar a ordem salva
+        enableDragAndDrop(); // Habilitar o recurso de arrastar e soltar
       }
     }
   } catch (error) {
     console.error("Erro ao carregar presets:", error);
-    loadingElement.style.display = "none"; // Esconder o loading em caso de erro
+    if (loadingElement) {
+      loadingElement.style.display = "none";
+    }
   }
 }
 

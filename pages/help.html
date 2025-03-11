@@ -5,18 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato FitFusion</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
 
-    <!-- Font Awesome (para ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
@@ -24,7 +21,6 @@
             position: relative;
             overflow: hidden;
             background-color: #f8f9fa;
-            /* Cor de fundo clara */
         }
 
         .icon-bg {
@@ -33,9 +29,7 @@
             font-size: 2rem;
             opacity: 0.5;
             animation: float 10s linear infinite;
-            /* Loop infinito */
             animation-fill-mode: none;
-            /* Reinicia sem manter estado final */
             visibility: hidden;
         }
 
@@ -47,7 +41,6 @@
 
             100% {
                 transform: translateY(-120vh) rotate(360deg);
-                /* Sai da tela e reinicia suavemente */
             }
         }
 
@@ -89,7 +82,6 @@
 
 <body class="bg-light d-flex justify-content-center align-items-center vh-100">
 
-    <!-- Botão de Voltar -->
     <a href="login.html" class="btn position-absolute top-0 start-0 m-3"
         style="border: solid 2px #00bb83; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; transform: rotate(-90deg);">
         <i class="fa-solid fa-turn-up" style="font-size: 25px;"></i>
@@ -98,16 +90,13 @@
     <div class="container" style="z-index: 1000;">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-8">
-                <!-- Card de Login -->
+
                 <div class="card shadow-lg">
                     <div class="card-body">
-                        <!-- Substituindo o título por uma imagem -->
                         <div class="text-center">
-                            <img src="../assets/img/fitfusion.png" style="height: 100px;" alt="Logo"
-                                class="img-fluid" />
+                            <img src="../assets/img/fitpilot.png" style="height: 100px;" alt="Logo" class="img-fluid" />
                         </div>
 
-                        <!-- Formulário de Login -->
                         <div id="login-form">
                             <div class="mb-3">
                                 <label for="email" class="form-label" style="font-weight: bold;">Email:</label>
@@ -134,13 +123,11 @@
                                     style="border-bottom-right-radius: 0px;" required></textarea>
                             </div>
 
-                            <!-- Ajuste no botão de login -->
                             <button id="login-button" type="button" class="btn btn-contact">
                                 Enviar
                             </button>
                         </div>
 
-                        <!-- Informações do Usuário -->
                         <div id="user-info" style="display: none;">
                             <h5 class="text-center text-success mb-3">Bem-vindo, <span id="user-name"></span></h5>
                             <button id="logout-button" class="btn btn-danger w-100">Sair</button>
@@ -152,7 +139,6 @@
         </div>
     </div>
 
-    <!-- Modal de Confirmação -->
     <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
         aria-hidden="true" style="margin-top: 270px;">
         <div class="modal-dialog">
@@ -163,10 +149,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <!-- Ícone de certo -->
+
                     <i class="fa-regular fa-circle-check"
                         style="font-size: 80px; padding-bottom: 16px; color: #00bb83;"></i>
-                    <!-- Mensagem de confirmação -->
+
                     <p id="confirmationMessage" style="font-size: medium; font-weight: bold;">Informações enviadas com
                         sucesso!</p>
                 </div>
@@ -193,7 +179,6 @@
     <i class="fas fa-skiing icon-bg" style="left: 70%; animation-delay: 6s;"></i>
     <i class="fas fa-bowling-ball icon-bg" style="left: 80%; animation-delay: 7s;"></i>
     <i class="fas fa-boxing-glove icon-bg" style="left: 90%; animation-delay: 8s;"></i>
-    <!-- Novos ícones adicionados mais à direita -->
     <i class="fas fa-futbol icon-bg" style="left: 35%; animation-delay: 0.2s;"></i>
     <i class="fas fa-gym icon-bg" style="left: 45%; animation-delay: 0.7s;"></i>
     <i class="fas fa-basketball-ball icon-bg" style="left: 55%; animation-delay: 1.2s;"></i>
@@ -204,7 +189,6 @@
     <i class="fas fa-yoga icon-bg" style="left: 70%; animation-delay: 3.7s;"></i>
     <i class="fas fa-jogging icon-bg" style="left: 80%; animation-delay: 4.2s;"></i>
     <i class="fas fa-street-view icon-bg" style="left: 90%; animation-delay: 4.7s;"></i>
-    <!-- Novos ícones com delays mais altos para continuar após os anteriores -->
     <i class="fas fa-bicycle icon-bg" style="left: 10%; animation-delay: 10s;"></i>
     <i class="fas fa-mountain icon-bg" style="left: 20%; animation-delay: 11s;"></i>
     <i class="fas fa-snowboarding icon-bg" style="left: 30%; animation-delay: 12s;"></i>
@@ -215,15 +199,12 @@
     <i class="fas fa-futbol icon-bg" style="left: 80%; animation-delay: 17s;"></i>
     <i class="fas fa-guitar icon-bg" style="left: 90%; animation-delay: 18s;"></i>
 
-    <!-- Carregando o Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 
     <script type="module">
-        // Configuração do Firebase (já incluída no seu código)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
@@ -236,25 +217,21 @@
             appId: "1:61815565821:web:52334725ccd5c6896bbd94",
         };
 
-        // Inicializando o Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
         async function sendRequest() {
-            // Capturando os valores dos campos do formulário
             const email = document.getElementById("email").value.trim();
             const gym = document.getElementById("gym").value.trim();
             const number = document.getElementById("number").value.trim();
             const description = document.getElementById("description").value.trim();
 
-            // Validação simples (opcional)
             if (!email || !gym || !number || !description) {
                 alert("Por favor, preencha todos os campos.");
                 return;
             }
 
             try {
-                // Adicionando os dados na coleção "requests"
                 const docRef = await addDoc(collection(db, "requests"), {
                     email: email,
                     gym: gym,
@@ -262,11 +239,9 @@
                     description: description,
                 });
 
-                // Exibindo o modal de confirmação com a mensagem do ID da solicitação
                 const confirmationMessage = document.getElementById("confirmationMessage");
                 confirmationMessage.textContent = "Salve o código da sua Solicitação: " + docRef.id;
 
-                // Mostrando o modal com o Bootstrap Modal
                 const modal = new bootstrap.Modal(confirmationModal);
                 modal.show();
 
@@ -276,13 +251,11 @@
             }
         }
 
-        // Associando o evento de clique ao botão
         document.getElementById("login-button").addEventListener("click", sendRequest);
 
-        // Redirecionar para a página de login após fechar o modal
         const confirmationModal = document.getElementById('confirmationModal');
         confirmationModal.addEventListener('hidden.bs.modal', function () {
-            window.location.href = 'login.html'; // Substitua com o caminho correto da sua página de login
+            window.location.href = 'login.html';
         });
     </script>
 

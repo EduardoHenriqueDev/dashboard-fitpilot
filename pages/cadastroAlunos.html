@@ -13,35 +13,26 @@
 </head>
 
 <style>
-  /* Tamanho e cor para o número */
   .green-number {
     font-size: 2.5rem;
-    /* Tamanho grande para o número */
     font-weight: bold;
     color: #00bb83;
-    /* Cor verde */
     display: block;
-    /* Faz o número aparecer em uma linha separada */
     margin-top: 10px;
-    /* Adiciona um espaço acima do número */
     text-align: center;
   }
 
   @media (min-height: 900px) {
     .card-body {
       max-height: 860px;
-      /* Altura máxima limitada */
       overflow-y: auto;
-      /* Permitir rolagem vertical se necessário */
     }
   }
 
   @media (max-height: 800px) {
     .card-body {
       max-height: 680px;
-      /* Altura máxima para telas com altura < 900px */
       overflow-y: auto;
-      /* Permitir rolagem vertical se necessário */
     }
   }
 </style>
@@ -50,7 +41,6 @@
   <div id="sidebar-container"></div>
 
   <div class="container my-5" style="margin: 0;">
-    <!-- Cadastro de Aluno -->
     <div class="row">
       <div class="col-md-6">
         <div class="card mb-4" style="border-radius: 10px; border: solid 2px #00bb83;">
@@ -82,14 +72,12 @@
         </div>
       </div>
 
-      <!-- Tabela de Alunos -->
       <div class="col-md-6">
         <div class="card mb-4" style="border-radius: 10px; border: solid 2px #00bb83;">
           <div class="card-header" style="font-weight: bold; border: solid 2px #00bb83;">
             Alunos Cadastrados
           </div>
           <div class="card-body">
-            <!-- Barra de Pesquisa -->
             <div class="input-group mb-3" style="margin-bottom: 0 !important; ">
               <input type="text" id="searchStudents" class="form-control" placeholder="Pesquisar aluno..." />
               <span class="input-group-text" style="border: solid 2px #00bb83;"><i class="fas fa-search"></i></span>
@@ -101,7 +89,6 @@
                   <th>Nome</th>
                   <th>E-mail</th>
                   <th>Funções</th>
-                  <!-- Nova coluna de funções -->
                 </tr>
               </thead>
               <tbody id="studentsList">
@@ -113,13 +100,11 @@
       </div>
     </div>
 
-    <!-- Adicionar Novo Preset -->
     <div class="card mb-4 d-none">
       <div class="card-header" style="font-weight: bold">
         Adicionar Novo Preset
       </div>
       <div class="card-body">
-        <!-- Título do campo Nome do Preset -->
         <div class="mb-3">
           <label for="presetName" style="font-weight: bold; margin-bottom: 10px">Nome do Preset:</label>
           <input type="text" id="presetName" class="form-control" placeholder="Exemplo: Treino A" />
@@ -127,9 +112,7 @@
 
         <h5 style="font-weight: bold">Adicionar Treinos ao Preset</h5>
 
-        <!-- Campos de treino visíveis desde o início -->
         <div id="workoutFields" class="mb-3">
-          <!-- Aqui os campos de treino serão adicionados dinamicamente -->
         </div>
 
         <div class="d-flex justify-content-start">
@@ -146,17 +129,13 @@
       </div>
     </div>
 
-    <!-- Lista de Presets -->
     <div class="d-none">
       <h3 class="title mb-4" style="font-weight: bold">Lista de Presets</h3>
       <div id="presetListContainer" class="d-flex overflow-auto flex-row">
-        <!-- Os cards de presets serão inseridos dinamicamente -->
       </div>
     </div>
 
-    <!-- Linha para Atribuir Preset e Mostrar Usuários Atribuídos -->
     <div class="row mb-4 d-none">
-      <!-- Atribuir Preset a um Usuário -->
       <div class="col-md-6">
         <div class="card">
           <div class="card-header" style="font-weight: bold">
@@ -185,21 +164,18 @@
         </div>
       </div>
 
-      <!-- Usuários Atribuídos a Presets -->
       <div class="col-md-6">
         <div class="card mb-4">
           <div class="card-header" style="font-weight: bold">
             Usuários Atribuídos a Presets
           </div>
           <div class="card-body">
-            <!-- Barra de Pesquisa -->
             <div class="input-group mb-3" style="margin-bottom: 0 !important">
               <input type="text" id="searchAssignedUsers" class="form-control"
                 placeholder="Pesquisar usuário ou preset..." />
               <span class="input-group-text"><i class="fas fa-search"></i></span>
             </div>
 
-            <!-- Tabela de Usuários Atribuídos -->
             <table id="assignedUsersTable" class="table table-striped">
               <thead>
                 <tr>
@@ -221,7 +197,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Seu script principal -->
   <script src="../js/pages/cadastro.js"></script>
 </body>
 
